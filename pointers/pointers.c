@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 /*
     Given a character pointer x (that points to an array of chars), and a
@@ -15,7 +16,12 @@
 */
 void string_copy(char *x, char *y)
 {
-
+while (*y) {
+      *x = *y;
+      y++;
+      x++;
+   }
+*x = '\0';
 }
 
 /*
@@ -28,9 +34,15 @@ void string_copy(char *x, char *y)
 */
 char *find_char(char *str, int c)
 {
-
+    while (*str){ 
+        if(*str == c){
+            return str;
+        }
+        else{
+            str++;
+        }
+    }
 }
-
 /*
     Searches the input string `haystack` for the first instance of
     the string `needle`. This function returns a pointer that points
@@ -39,11 +51,23 @@ char *find_char(char *str, int c)
 
     Do not use the `strstr` function from the standard library.
 */
-char *find_string(char *haystack, char *needle)
-{
 
+char *find_string(char *haystack, char *needle) {
+    int i;
+    for (i=0;i< strlen(haystack); i++) {
+        if (*haystack == *needle) {
+            for (char *p1 = haystack, *p2 = needle;;) {
+                if (!*p2)
+                    return haystack;
+                if (*p1++ != *p2++)
+                    break;
+            }
+        }
+        if (!*haystack++)
+            break;
+    }
+    return NULL;
 }
-
 #ifndef TESTING
 int main(void)
 {

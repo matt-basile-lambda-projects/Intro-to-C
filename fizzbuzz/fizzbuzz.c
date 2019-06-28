@@ -10,7 +10,27 @@
 */
 int fizzbuzz(int n)
 {
-
+ int counter = 0;
+ for(counter = 0; counter<=n; counter++){
+     if (counter == 0){
+         continue;
+     }
+     else if(counter%3 == 0){
+         if(counter%5 == 0){
+            char *str = "FizzBuzz";
+            printf( "%s\n", str); 
+         }
+         else{
+             char *str = "Fizz";
+             printf( "%s\n", str);
+         }
+     }
+     else if(counter%5 == 0){
+            char *str = "Buzz";
+            printf( "%s\n", str);
+     }
+ }
+ return 0;
 }
 
 #ifndef TESTING
